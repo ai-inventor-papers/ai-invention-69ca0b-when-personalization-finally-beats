@@ -1,0 +1,11 @@
+[project]
+name = "coldstart-eval"
+version = "0.1.0"
+description = "Pre-registered wide-screen survivor selection for cold-start heuristics (screen half only)"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy==2.5.3",
+    "scipy==1.18.1",
+    "scikit-learn==1.9.1",
+    "loguru==0.7.3",
+]

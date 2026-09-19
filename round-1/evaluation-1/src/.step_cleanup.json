@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "at": 1789842520.19867,
+  "dry_run": true,
+  "freed_bytes": 223767721,
+  "skipped": "",
+  "removed": [
+    {
+      "path": "coldstart_eval.egg-info",
+      "source": "manifest",
+      "category": "build_artifact",
+      "reason": "editable-install metadata; regenerated automatically by `uv pip install -e .`",
+      "size_bytes": 511
+    },
+    {
+      "path": ".venv",
+      "source": "structural",
+      "category": "cache",
+      "reason": "virtualenv (pyvenv.cfg)",
+      "size_bytes": 223767210
+    }
+  ],
+  "refused": [
+    {
+      "path": ".venv",
+      "why": "keep list protects gen_art_evaluation_1/.venv/lib/python3.12/site-packages/sklearn/externals/array_api_compat/README.md"
+    }
+  ]
+}

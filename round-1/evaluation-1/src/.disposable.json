@@ -1,0 +1,7 @@
+{"disposables": [
+  {"path": ".venv", "category": "venv",
+    "reason": "recreatable via `uv venv .venv --python=3.12` + `uv pip install -e .` from pyproject.toml"},
+
+  {"path": "coldstart_eval.egg-info", "category": "build_artifact",
+    "reason": "editable-install metadata; regenerated automatically by `uv pip install -e .`"}
+]}

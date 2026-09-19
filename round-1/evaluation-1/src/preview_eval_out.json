@@ -1,0 +1,154 @@
+{
+  "metadata": {
+    "evaluation_name": "cold-start heuristic wide-screen: pre-registered survivor selection",
+    "status": "INCONCLUSIVE / UNCOVERED - shared pool absent at evaluation time",
+    "run_preamble": {
+      "running_with_pool": false,
+      "pool_candidates_found": [],
+      "pool_load_errors": [],
+      "timestamp": "2026-09-19T18:26:21Z",
+      "seed_base": 20240601,
+      "bootstrap_resamples": 2000,
+      "confirm_half_touched": false
+    },
+    "coverage_report": {
+      "screen_executed_on_shared_data": false,
+      "reason": "No compatible shared-pool method_out.json / catalog measurements were found; the parallel EXPERIMENT artifact had not published its per-user (catalog, heuristic, k) rank measurements at evaluation tim...",
+      "catalog_ids_with_cells": [],
+      "heuristics_present": [],
+      "k_cells_present": {},
+      "n_users_per_cell": {},
+      "n_confirm_catalogs_seen": 0
+    },
+    "metric_definitions": {
+      "primary": "per-user NDCG@5 = 1/log2(r+1) if r<=5 else 0 (r = 1-indexed rank of the true held-out next item; single relevant item, ideal DCG=1)",
+      "secondary": {
+        "recall@5": "1 if r<=5 else 0",
+        "ndcg@10": "1/log2(r+1) if r<=10 else 0"
+      }
+    },
+    "reference_definition": "per catalog: best popularity-family heuristic (global MostPop, category-banded POP, price-band POP; NOT recency-windowed POP) by mean NDCG@5 over k in {0,1,2,3,5,8} on the screen half",
+    "per_candidate": {
+      "A": {
+        "target_k": [
+          1,
+          2,
+          3
+        ],
+        "gains_by_k": {},
+        "per_catalog_gain_table": {},
+        "ci_excludes0_fraction": null,
+        "median_gain": null,
+        "survived": null
+      },
+      "C": {
+        "target_k": [
+          0
+        ],
+        "gains_by_k": {},
+        "per_catalog_gain_table": {},
+        "ci_excludes0_fraction": null,
+        "median_gain": null,
+        "survived": null
+      },
+      "D": {
+        "target_k": [
+          0,
+          1,
+          2
+        ],
+        "gains_by_k": {},
+        "per_catalog_gain_table": {},
+        "ci_excludes0_fraction": null,
+        "median_gain": null,
+        "survived": null
+      },
+      "B": {
+        "within_noise_fraction_pairs": null,
+        "seed_var_winner_identity": null,
+        "note": "not measurable without shared measurements"
+      }
+    },
+    "selection_decision": {
+      "survivor": "NNN",
+      "rule_trace": "Pre-registered mechanical rule: A candidate survives iff (i) median-over-catalogs gain >= 0.02 AND its 95% CI excludes 0 in >=50% of catalogs AND (ii) it is not dominated by another candidate in >=50%...",
+      "ties": "not evaluated"
+    },
+    "diagnostic_report": {
+      "crossover_k_star_by_family": {},
+      "signed_checks": {},
+      "plain_vs_banded_smallest": {}
+    },
+    "decision_rule": {
+      "features": [
+        "sales_hhi",
+        "attr_entropy",
+        "mean_hist"
+      ],
+      "rule": null,
+      "LOF_accuracy_vs_baselines": null
+    },
+    "mi_ceiling": {
+      "per_catalog": {},
+      "caveats": "Plug-in MI is positively biased for small samples and is an UPPER BOUND / ceiling, not a target. Not computed because the shared pool is absent."
+    },
+    "elicitation_gain_k0": {
+      "detail": "not computed - no shared measurements"
+    },
+    "windowed_pop_turnover": {
+      "detail": "not computed - no shared measurements"
+    },
+    "confirmation_protocol_for_iter2": {
+      "title": "Iteration-2 confirmation protocol for the untouched CONFIRM half (pre-registered)",
+      "reserved_confirm_catalogs": "Per the DATASET artifact's pre-assignment: the CONFIRM half = a reserved subset of the synthetic catalog families plus ALL real catalogs. Exact reserved catalog_ids are recorded in the pool's per-cata...",
+      "metric": "per-user NDCG@5 (single relevant item: 1/log2(r+1) if r<=5 else 0)",
+      "reference": "best popularity-family heuristic per catalog (max mean NDCG@5 over k in {0,1,2,3,5,8} on the screen half); computed on the CONFIRM half from its own popularity-family measurements",
+      "target_k_by_candidate": {
+        "A": [
+          1,
+          2,
+          3
+        ],
+        "C": [
+          0
+        ],
+        "D": [
+          0,
+          1,
+          2
+        ]
+      },
+      "survivor_being_confirmed": "TBD - to be fixed by the screen once the shared pool is available",
+      "success_thresholds": {
+        "median_over_confirm_catalogs_gain": ">= 0.02 NDCG@5 (candidate over the confirm-half reference at the candidate's target k)",
+        "ci_excludes_zero_fraction": ">= 50% of confirm catalogs (95% stratified-bootstrap CI over users, paired, disclosed seeds)",
+        "ties": "CI straddling 0 is reported explicitly as a tie (a tie is a finding); if the confirm run cannot discriminate, the screen outcome stands as reported and iteration 2 records the tie without re-selecting..."
+      },
+      "holdout_protocol": [
+        "The CONFIRM half must remain UTTERLY UNTOUCHED until iteration 2. It is never used (a) to fit any heuristic parameter, (b) to choose the reference, (c) to pick the survivor, or (d) to tune any bootstr..."
+      ],
+      "execution_status": "WRITTEN BUT NOT EXECUTED (confirm half not touched by this artifact)."
+    }
+  },
+  "metrics_agg": {
+    "screen_executed_on_shared_data": 0.0,
+    "catalog_cells_covered": 0.0,
+    "catalogs_with_screen_cells": 0.0
+  },
+  "datasets": [
+    {
+      "dataset": "screen_uncovered_status",
+      "examples": [
+        {
+          "input": "{\"role\": \"coverage_report\", \"pool_found\": false}",
+          "output": "eval_out.json skeleton: screen not executed on shared data; see metadata.selection_decision and metadata.confirmation_protocol_for_iter2.",
+          "metadata_status": "uncovered",
+          "metadata_pool_found": "false",
+          "metadata_confirm_half_touched": "false",
+          "eval_screen_executed": 0.0,
+          "eval_cells_covered": 0.0
+        }
+      ]
+    }
+  ]
+}
