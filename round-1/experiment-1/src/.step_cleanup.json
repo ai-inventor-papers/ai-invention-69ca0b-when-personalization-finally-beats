@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "at": 1789852138.8999643,
+  "dry_run": true,
+  "freed_bytes": 268154302,
+  "skipped": "",
+  "removed": [
+    {
+      "path": "__pycache__",
+      "source": "structural",
+      "category": "cache",
+      "reason": "known cache directory",
+      "size_bytes": 148530
+    },
+    {
+      "path": ".venv",
+      "source": "structural",
+      "category": "cache",
+      "reason": "virtualenv (pyvenv.cfg)",
+      "size_bytes": 268005772
+    }
+  ],
+  "refused": [
+    {
+      "path": "out_smoke",
+      "why": "keep list protects gen_art_experiment_1/out_smoke/provenance.jsonl"
+    },
+    {
+      "path": "out_smoke2",
+      "why": "keep list protects gen_art_experiment_1/out_smoke2/provenance.jsonl"
+    },
+    {
+      "path": "out_corners",
+      "why": "keep list protects gen_art_experiment_1/out_corners/provenance.jsonl"
+    },
+    {
+      "path": "out_verify",
+      "why": "keep list protects gen_art_experiment_1/out_verify/provenance.jsonl"
+    },
+    {
+      "path": "out_verify2",
+      "why": "keep list protects gen_art_experiment_1/out_verify2/provenance.jsonl"
+    },
+    {
+      "path": ".venv",
+      "why": "keep list protects gen_art_experiment_1/.venv/lib/python3.12/site-packages/sklearn/externals/array_api_compat/README.md"
+    }
+  ]
+}

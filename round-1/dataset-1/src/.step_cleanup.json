@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "at": 1789843163.0867732,
+  "dry_run": true,
+  "freed_bytes": 225124839,
+  "skipped": "",
+  "removed": [
+    {
+      "path": "raw",
+      "source": "manifest",
+      "category": "dataset",
+      "reason": "Public source downloads (UCI xlsx, Olist CSVs); re-fetched by process_real.py. Regenerable, not part of the final corpus.",
+      "size_bytes": 114021935
+    },
+    {
+      "path": ".venv",
+      "source": "structural",
+      "category": "cache",
+      "reason": "virtualenv (pyvenv.cfg)",
+      "size_bytes": 111071334
+    },
+    {
+      "path": "__pycache__",
+      "source": "structural",
+      "category": "cache",
+      "reason": "known cache directory",
+      "size_bytes": 31570
+    }
+  ],
+  "refused": [
+    {
+      "path": "logs",
+      "why": "keep list protects gen_art_dataset_1/logs/process_real2.log"
+    }
+  ]
+}
