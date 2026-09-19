@@ -1,0 +1,14 @@
+[project]
+name = "coldstart-heuristic-sweep"
+version = "0.1.0"
+description = "CPU-only sweep of lightweight cold-start heuristics on small e-commerce catalogs"
+requires-python = ">=3.12"
+# Versions pinned to the exact ones installed in the run's .venv
+# (`uv pip freeze`), for reproducible re-runs.
+dependencies = [
+    "numpy==2.5.3",
+    "pandas==3.0.6",
+    "scipy==1.18.1",
+    "scikit-learn==1.9.1",
+    "loguru==0.7.3",
+]
