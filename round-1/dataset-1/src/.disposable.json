@@ -1,0 +1,10 @@
+{
+  "disposables": [
+    {"path": "raw", "category": "dataset",
+     "reason": "Public source downloads (UCI xlsx, Olist CSVs); re-fetched by process_real.py. Regenerable, not part of the final corpus."},
+    {"path": ".venv", "category": "venv",
+     "reason": "Recreatable from pyproject/uv from requirements.txt."},
+    {"path": "logs", "category": "log",
+     "reason": "Transient run logs; regenerable."}
+  ]
+}
