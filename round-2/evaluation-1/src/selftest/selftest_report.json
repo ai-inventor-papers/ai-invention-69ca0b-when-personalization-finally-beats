@@ -1,0 +1,18 @@
+{
+  "selftest_passed": true,
+  "n_catalogs": 4,
+  "decision": "D",
+  "decision_rule_keys": [
+    "n_catalogs",
+    "features",
+    "regression",
+    "classification",
+    "baselines",
+    "LOO_gain_over_baselines",
+    "deployable_map",
+    "position_note"
+  ],
+  "confirm_groups": [
+    "screen_synth_confirm_half"
+  ]
+}

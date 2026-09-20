@@ -1,0 +1,12 @@
+[project]
+name = "coldstart-eval-iter2"
+version = "0.1.0"
+description = "Iteration-2 evaluation: execute the fixed pre-registered 9-step cold-start screen + confirm round"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy==2.5.3",
+    "pandas==3.0.6",
+    "scipy==1.18.1",
+    "scikit-learn==1.9.1",
+    "loguru==0.7.3",
+]

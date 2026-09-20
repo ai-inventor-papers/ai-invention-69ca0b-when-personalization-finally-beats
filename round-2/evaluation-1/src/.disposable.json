@@ -1,0 +1,6 @@
+{"disposables": [
+  {"path": ".venv", "category": "venv",
+    "reason": "recreatable from pyproject.toml via `uv sync`"},
+  {"path": "logs", "category": "logs",
+    "reason": "regenerable loguru run logs; not a deliverable"}
+]}
