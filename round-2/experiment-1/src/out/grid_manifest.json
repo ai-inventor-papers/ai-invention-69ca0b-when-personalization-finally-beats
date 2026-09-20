@@ -1,0 +1,14 @@
+{
+ "main_grid_catalogs": 108,
+ "null_replication_catalogs": 19,
+ "real_pool_catalogs_copied": [
+  "olist_all.json",
+  "olist_furniture_decor.json",
+  "uci_retail_1_lights.json",
+  "uci_retail_2_lights.json"
+ ],
+ "gate_failures": 0,
+ "main_grid_dir": "/ai-inventor/aii_data/runs/run_5D4WD4vgZZMJ/3_invention_loop/iter_2/gen_art/gen_art_experiment_1/data/main_grid",
+ "null_dir": "/ai-inventor/aii_data/runs/run_5D4WD4vgZZMJ/3_invention_loop/iter_2/gen_art/gen_art_experiment_1/data/null_replication",
+ "wall_s": 984.8
+}

@@ -1,0 +1,49 @@
+{
+ "n_main_grid_cells": 108,
+ "headroom_full_mean_by_nominal_phi": {
+  "0.0": -0.16733,
+  "0.25": -0.16492,
+  "0.5": -0.16557,
+  "1.0": -0.15192
+ },
+ "headroom_inner_mean_by_nominal_phi": {
+  "0.0": -0.16625,
+  "0.25": -0.16382,
+  "0.5": -0.16458,
+  "1.0": -0.15117
+ },
+ "n_capped_cells": 21,
+ "capped_cells": [
+  "phi_V100_EHIGH_z0.5_p1_s0",
+  "phi_V100_EHIGH_z0.5_p1_s1",
+  "phi_V100_ELOW_z0.5_p1_s0",
+  "phi_V100_ELOW_z0.5_p1_s1",
+  "phi_V20_EHIGH_z0.5_p0.5_s1",
+  "phi_V20_EHIGH_z0.5_p0.5_s2",
+  "phi_V20_EHIGH_z0.5_p1_s0",
+  "phi_V20_EHIGH_z0.5_p1_s1",
+  "phi_V20_EHIGH_z1.5_p1_s0",
+  "phi_V20_EHIGH_z1.5_p1_s1",
+  "phi_V20_ELOW_z0.5_p0.5_s0",
+  "phi_V20_ELOW_z0.5_p1_s0",
+  "phi_V20_ELOW_z0.5_p1_s1",
+  "phi_V20_ELOW_z1.5_p1_s0",
+  "phi_V20_ELOW_z1.5_p1_s1",
+  "phi_V500_EHIGH_z0.5_p0.5_s2",
+  "phi_V500_EHIGH_z0.5_p1_s0",
+  "phi_V500_EHIGH_z0.5_p1_s1",
+  "phi_V500_ELOW_z0.5_p0.5_s1",
+  "phi_V500_ELOW_z0.5_p1_s0",
+  "phi_V500_ELOW_z0.5_p1_s1"
+ ],
+ "n_overtake_cells": 0,
+ "overtake_cells": [],
+ "mean_phi_effective_by_nominal": {
+  "0.0": 0.0,
+  "0.25": 0.25,
+  "0.5": 0.487,
+  "1.0": 0.7488
+ },
+ "delta_dominant_cells_phi1": 7,
+ "headroom_definition": "headroom = mean over k in {1,2,3,5,8} of [NDCG@5(content_knn_3) - NDCG@5(best popularity-family)]; best pop chosen on screen-inner cells (iteration-1 discipline); headroom_full evaluated on ALL valid users, headroom on screen-inner users only"
+}

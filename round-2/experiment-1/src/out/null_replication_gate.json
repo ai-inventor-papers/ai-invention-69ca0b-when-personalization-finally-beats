@@ -1,0 +1,9 @@
+{
+ "cells_checked": 1955,
+ "cells_pass_1e6": 573,
+ "cells_pass_print5": 1955,
+ "headroom_checked": 23,
+ "headroom_failed_1e3": 0,
+ "basis": "published iteration-1 aggregates print NDCG@5 to 5dp (max quantization error 5e-6); pass_1e6 is the strict tolerance and is expected to reflect print quantization, pass_print5 (<=5e-6+1e-9) is the effective gate; headroom gate is |delta| <= 1e-3",
+ "gate": true
+}
