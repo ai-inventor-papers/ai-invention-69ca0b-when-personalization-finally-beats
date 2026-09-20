@@ -1,0 +1,14 @@
+[project]
+name = "gen-art-dataset-1-iter2"
+version = "0.1.0"
+description = "Iteration-2 dataset artifact: real small e-commerce catalog confirm-evidence widening (search + standardization)."
+requires-python = ">=3.12"
+dependencies = [
+    "pandas==3.0.6",
+    "polars==1.44.2",
+    "duckdb==1.5.5",
+    "pyarrow==25.0.1",
+    "requests==2.34.2",
+    "openpyxl==3.1.5",
+    "loguru==0.7.3",
+]

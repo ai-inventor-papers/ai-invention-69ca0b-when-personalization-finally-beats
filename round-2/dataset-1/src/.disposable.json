@@ -1,0 +1,12 @@
+{"disposables": [
+  {"path": "raw/rr_in", "category": "dataset",
+   "reason": "Retailrocket raw CSVs (events/item_properties, ~1GB); re-fetched and sha-verified by raw/fetch_rr_lfs.py; only counts+shas retained as evidence"},
+  {"path": "raw/ecommerce_orders.csv", "category": "dataset",
+   "reason": "candidate raw file; rejected (synthetic); re-creatable if ever needed"},
+  {"path": "raw/supermarket_germany.csv", "category": "dataset",
+   "reason": "candidate raw file; rejected (6-item universe)"},
+  {"path": "raw/tafeng_D11-02.zip", "category": "dataset",
+   "reason": "corrupt candidate download; unusable"},
+  {"path": ".venv", "category": "venv",
+   "reason": "recreatable from pyproject.toml with uv venv"}
+]}

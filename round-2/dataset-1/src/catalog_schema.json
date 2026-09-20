@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.aiinventor/catalog_schema.json",
+  "title": "Small e-commerce catalog corpus schema",
+  "description": "One catalog is one small e-commerce shop (real restricted subset OR one synthetic family) written to a single common schema so that every cold-start heuristic (popularity, banded popularity, content-kNN, hybrids) reads identical evidence. RAW catalogs only: no metrics, no fitted models, no derived statistics (HHI/entropy/headroom/MI are the EXPERIMENT artifact's job). family_params (generation inputs) and fold are metadata.",
+  "type": "object",
+  "required": [
+    "catalog_id", "origin", "source_name", "family_params",
+    "items", "user_logs", "forced_choice_probes", "fold", "partition_meta"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "catalog_id": {
+      "type": "string",
+      "description": "Unique catalog identifier, e.g. 'uci_retail_1' or 'synth_v200_s0'."
+    },
+    "origin": {
+      "type": "string",
+      "enum": ["real", "synthetic"],
+      "description": "real = restricted subset of a public e-commerce log; synthetic = latent-intent generated family."
+    },
+    "source_name": {
+      "type": "string",
+      "description": "Provenance label, e.g. 'uci_online_retail_1', 'olist_brazilian_ecommerce', 'latent_intent_model'."
+    },
+    "family_params": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Generation / restriction parameters that fully describe how this catalog was produced. For synthetic: n_items, n_attrs (+attribute entropy), zipf_s, alpha (stickiness/heterogeneity), mean_hist, n_users, dynamic_turnover, horizon_days, probe_noise, seed. For real: restriction_rule, min_user_purchases, forced_choice_origin. These are input metadata, NOT derived statistics."
+    },
+    "items": {
+      "type": "array",
+      "description": "Catalog item universe, |V| <= ~1000.",
+      "items": {
+        "type": "object",
+        "required": ["item_id", "attrs", "category", "price_band"],
+        "additionalProperties": false,
+        "properties": {
+          "item_id": { "type": "string" },
+          "attrs": {
+            "type": "object",
+            "additionalProperties": { "type": "number" },
+            "description": "One-hot nominal attributes (e.g. {\"cat_lights\": 1.0}). Content features for content-kNN."
+          },
+          "category": {
+            "type": ["string", "number"],
+            "description": "Nominal category this item belongs to (content/stratification key)."
+          },
+          "price_band": {
+            "type": "integer",
+            "minimum": 0, "maximum": 4,
+            "description": "Within-catalog 0..4 price band (banded-popularity stratification)."
+          },
+          "attribute_diversity": {
+            "type": "number",
+            "description": "Number of active attributes (structural; 1 for single-category items)."
+          }
+        }
+      }
+    },
+    "user_logs": {
+      "type": "array",
+      "description": "Temporally ordered per-user purchase histories with leave-last-out heldout.",
+      "items": {
+        "type": "object",
+        "required": ["user_id", "ordered_history", "heldout_item", "timestamps"],
+        "additionalProperties": false,
+        "properties": {
+          "user_id": { "type": "string" },
+          "ordered_history": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "item_id sequence in purchase order (chronological). k-grid truncation operates here."
+          },
+          "heldout_item": { "type": "string", "description": "The next (leave-last-out) purchase." },
+          "timestamps": {
+            "type": "array",
+            "items": { "type": "integer" },
+            "description": "Epoch-ms per history purchase; strictly increasing, enabling recency-decay & temporal splits. Heldout occurs after the last timestamp."
+          }
+        }
+      }
+    },
+    "forced_choice_probes": {
+      "type": "array",
+      "description": "Forced-choice question/answer pairs for the elicitation simulator. Synthetic: Bernoulli(p) answers from the response model under family_params (probe_noise); real: revealed-preference pairs (A in history, B popular-but-never-bought, choice=1) documented by prob_note.",
+      "items": {
+        "type": "object",
+        "required": ["user_id", "item_a", "item_b", "choice"],
+        "additionalProperties": false,
+        "properties": {
+          "user_id": { "type": "string" },
+          "item_a": { "type": "string" },
+          "item_b": { "type": "string" },
+          "choice": { "type": "integer", "enum": [0, 1], "description": "1 => item_a chosen/endorsed." },
+          "ground_truth_p_a": { "type": "number", "description": "Synthetic only: underlying Bernoulli p = P(A)/(P(A)+P(B))." },
+          "prob_note": { "type": "string", "description": "Real only: 'revealed preference (A in history, B not)'." }
+        }
+      }
+    },
+    "fold": {
+      "type": "string",
+      "enum": ["screen", "confirm"],
+      "description": "Pre-assigned fold. All REAL catalogs are 'confirm' (reserved for iteration-2 confirmation). Synthetic families assigned ~half screen / half confirm deterministically (sha256 of catalog_id)."
+    },
+    "partition_meta": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Outcome/label semantics: for real catalogs {partition:'heldout', holdout:'last', temporal:'true'}; for synthetic {partition:'generation', generator:'latent_intent'}."
+    }
+  }
+}

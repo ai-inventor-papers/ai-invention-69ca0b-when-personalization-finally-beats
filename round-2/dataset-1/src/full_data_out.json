@@ -1,0 +1,603 @@
+{
+  "metadata": {
+    "corpus": "small_ecommerce_catalog_screen_iter2",
+    "schema": "catalog_schema.json (iter-1 common schema)",
+    "iteration": 2,
+    "artifact": "gen_art_dataset_1 (real-catalog confirm-evidence widening)",
+    "outcome": "no_additional_real_catalog_accepted",
+    "n_accepted": 0,
+    "n_rejection_records": 64,
+    "k_grid": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      8
+    ],
+    "finding": "The public freely-downloadable landscape of genuinely small (<=1000-item) per-user purchase logs with item category+price is effectively empty in this environment: Retailrocket's most complete free mirror yields at most 96 users with >=4 purchases (best configuration) and has no price; Dunnhumby is gated behind login/form; the boutique/marketplace sweep produced no qualifying candidate. The acceptance bar was not lowered. This empty result is the corpus-contribution finding; see search_log.md and rejections.json. Every example is one rejected candidate: metadata_criterion_failed + metadata_counts carry the measured counts (Retailrocket subtree counts parsed from logs/explore_rr.log and logs/build.log)."
+  },
+  "datasets": [
+    {
+      "dataset": "acquisition_rejection_log",
+      "examples": [
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"global top-900 items by purchase-line count (all categories), MIN_PURCHASES in {4,5}\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "global top-900 items by purchase-line count",
+          "metadata_criterion_failed": "(4) users_with_purchases<100; (2) price absent (no price field in source)",
+          "metadata_verdict": "Best freely-obtainable retailrocket configuration: 900 items but only 96 users with >=4 purchases (83 with >=5), below the ~100 floor; and no price field.",
+          "metadata_counts": "{\"restriction\":\"top-900 items global\",\"n_items\":900,\"users_ge4\":96,\"users_ge5\":83}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 80\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 80 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 140\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 140 subtree",
+          "metadata_criterion_failed": "(4) users_with_->=5_purchases<100 within restricted subtree; (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":3547,\"tx\":7524,\"users\":4119,\"users_ge5\":85}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 168\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 168 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 171\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 171 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 181\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 181 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 231\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 231 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 250\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 250 subtree",
+          "metadata_criterion_failed": "(4) users_with_->=5_purchases<100 within restricted subtree; (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":246,\"tx\":422,\"users\":348,\"users_ge5\":1}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 280\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 280 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 300\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 300 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 306\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 306 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 307\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 307 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 345\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 345 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 347\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 347 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 378\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 378 subtree",
+          "metadata_criterion_failed": "(4) users_with_->=5_purchases<100 within restricted subtree; (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":85,\"tx\":146,\"users\":120,\"users_ge5\":1}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 395\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 395 subtree",
+          "metadata_criterion_failed": "(4) users_with_->=5_purchases<100 within restricted subtree; (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":746,\"tx\":1663,\"users\":1050,\"users_ge5\":33}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 431\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 431 subtree",
+          "metadata_criterion_failed": "(4) users_with_->=5_purchases<100 within restricted subtree; (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":1,\"tx\":1,\"users\":1,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 462\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 462 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 554\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 554 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 566\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 566 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 653\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 653 subtree",
+          "metadata_criterion_failed": "(4) users_with_->=5_purchases<100 within restricted subtree; (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":823,\"tx\":1333,\"users\":781,\"users_ge5\":22}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 659\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 659 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 679\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 679 subtree",
+          "metadata_criterion_failed": "(4) users_with_->=5_purchases<100 within restricted subtree; (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":271,\"tx\":545,\"users\":419,\"users_ge5\":3}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 721\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 721 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 755\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 755 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 791\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 791 subtree",
+          "metadata_criterion_failed": "(4) users_with_->=5_purchases<100 within restricted subtree; (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":269,\"tx\":305,\"users\":202,\"users_ge5\":3}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 803\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 803 subtree",
+          "metadata_criterion_failed": "(4) users_with_->=5_purchases<100 within restricted subtree; (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":4,\"tx\":6,\"users\":5,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 859\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 859 subtree",
+          "metadata_criterion_failed": "(4) users_with_->=5_purchases<100 within restricted subtree; (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":67,\"tx\":98,\"users\":79,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 899\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 899 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 919\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 919 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 930\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 930 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 974\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 974 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1046\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1046 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1057\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1057 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1062\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1062 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1123\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1123 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1158\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1158 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1182\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1182 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1224\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1224 subtree",
+          "metadata_criterion_failed": "(4) users_with_->=5_purchases<100 within restricted subtree; (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":1056,\"tx\":1537,\"users\":857,\"users_ge5\":23}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1319\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1319 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1394\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1394 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1428\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1428 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1446\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1446 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1482\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1482 subtree",
+          "metadata_criterion_failed": "(4) users_with_->=5_purchases<100 within restricted subtree; (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":1165,\"tx\":2174,\"users\":1307,\"users_ge5\":16}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1490\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1490 subtree",
+          "metadata_criterion_failed": "(4) users_with_->=5_purchases<100 within restricted subtree; (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":321,\"tx\":504,\"users\":384,\"users_ge5\":3}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1532\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1532 subtree",
+          "metadata_criterion_failed": "(4) users_with_->=5_purchases<100 within restricted subtree; (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":1504,\"tx\":2744,\"users\":1569,\"users_ge5\":31}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1538\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1538 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1571\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1571 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1579\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1579 subtree",
+          "metadata_criterion_failed": "(4) users_with_->=5_purchases<100 within restricted subtree; (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":12,\"tx\":12,\"users\":10,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1594\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1594 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1597\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1597 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1600\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1600 subtree",
+          "metadata_criterion_failed": "(4) users_with_->=5_purchases<100 within restricted subtree; (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":1437,\"tx\":2742,\"users\":1552,\"users_ge5\":39}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1602\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1602 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1692\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1692 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 1698\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 1698 subtree",
+          "metadata_criterion_failed": "(4) users_with_->=5_purchases<100 within restricted subtree; (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":91,\"tx\":226,\"users\":175,\"users_ge5\":1}"
+        },
+        {
+          "input": "{\"source\":\"Dunnhumby Complete Journey / Customer First 2019\",\"attempt\":\"Kaggle frtgnn download\"}",
+          "output": "REJECTED",
+          "metadata_source": "Dunnhumby Complete Journey / Customer First 2019",
+          "metadata_attempt": "Kaggle frtgnn download",
+          "metadata_criterion_failed": "(acquisition) gated behind Kaggle login (no api token present)",
+          "metadata_verdict": "Not obtainable in this environment; the price-bearing real-catalog evidence source is unavailable.",
+          "metadata_counts": "{\"access\":\"kaggle_login_required\"}"
+        },
+        {
+          "input": "{\"source\":\"Dunnhumby source-files (dunnhumby.com)\",\"attempt\":\"full 9-part RDS download\"}",
+          "output": "REJECTED",
+          "metadata_source": "Dunnhumby source-files (dunnhumby.com)",
+          "metadata_attempt": "full 9-part RDS download",
+          "metadata_criterion_failed": "(acquisition) gated Contentful form-fill buttons; only tiny ungated samples",
+          "metadata_verdict": "Only 'Data-Sample' (22,437 B) and 'Sample-2K-baskets' ungated; far below the 100-user bar.",
+          "metadata_counts": "{\"data_sample_zip_bytes\":22437}"
+        },
+        {
+          "input": "{\"source\":\"HuggingFace mirror 54-acme/dunnhumby_2019\",\"attempt\":\"HF Hub API load\"}",
+          "output": "REJECTED",
+          "metadata_source": "HuggingFace mirror 54-acme/dunnhumby_2019",
+          "metadata_attempt": "HF Hub API load",
+          "metadata_criterion_failed": "(acquisition) gated / 404 on the Hub API; no loadable mirror",
+          "metadata_verdict": "No accessible HF mirror of the Dunnhumby Customer First data found.",
+          "metadata_counts": "{\"hf_api\":\"invalid_username_or_password\"}"
+        },
+        {
+          "input": "{\"source\":\"Maven Roasters coffee shop (HF jason1966 mirror)\",\"attempt\":\"small-shop boutique sweep\"}",
+          "output": "REJECTED",
+          "metadata_source": "Maven Roasters coffee shop (HF jason1966 mirror)",
+          "metadata_attempt": "small-shop boutique sweep",
+          "metadata_criterion_failed": "(3)/(4) no customer/user identifier (only transaction_id, product, unit_price, timestamp)",
+          "metadata_verdict": "Genuinely small shop with category+price+timestamp but NO user dimension; per-user histories impossible.",
+          "metadata_counts": "{\"has_product_category\":true,\"has_unit_price\":true,\"has_user_id\":false}"
+        },
+        {
+          "input": "{\"source\":\"Northwind purchase orders (HF AyoubChLin/boussad)\",\"attempt\":\"classic small retailer attempt\"}",
+          "output": "REJECTED",
+          "metadata_source": "Northwind purchase orders (HF AyoubChLin/boussad)",
+          "metadata_attempt": "classic small retailer attempt",
+          "metadata_criterion_failed": "(1)/(3) PDF purchase-order documents for text classification, not structured per-user transaction logs",
+          "metadata_verdict": "Not a transaction log; classic Northwind RDB is only ~77 products / ~91 customers.",
+          "metadata_counts": "{\"classic_products\":77,\"classic_customers\":91}"
+        },
+        {
+          "input": "{\"source\":\"supermarket_germany.csv (workspace raw/)\",\"attempt\":\"small supermarket attempt\"}",
+          "output": "REJECTED",
+          "metadata_source": "supermarket_germany.csv (workspace raw/)",
+          "metadata_attempt": "small supermarket attempt",
+          "metadata_criterion_failed": "(1) only 6 distinct items (Product_line categories; no SKU column)",
+          "metadata_verdict": "6-item universe far below the 150-item floor.",
+          "metadata_counts": "{\"rows\":1000,\"distinct_customers\":198,\"distinct_items\":6}"
+        },
+        {
+          "input": "{\"source\":\"ecommerce_orders.csv (workspace raw/)\",\"attempt\":\"small per-user e-commerce order log attempt\"}",
+          "output": "REJECTED",
+          "metadata_source": "ecommerce_orders.csv (workspace raw/)",
+          "metadata_attempt": "small per-user e-commerce order log attempt",
+          "metadata_criterion_failed": "(5) provenance/origin: unverifiable source, synthetic signature (365 distinct timestamps for 10k rows; sequential customer_id 1..2999, product_id 1..1000)",
+          "metadata_verdict": "Cannot be trusted as REAL catalog evidence; accepting it would violate the no-fabricated-provenance rule.",
+          "metadata_counts": "{\"rows\":10000,\"distinct_customers\":2713,\"distinct_items\":999,\"distinct_timestamps\":365}"
+        },
+        {
+          "input": "{\"source\":\"Ta Feng grocery tafeng_D11-02.zip (workspace raw/)\",\"attempt\":\"small grocery basket attempt\"}",
+          "output": "REJECTED",
+          "metadata_source": "Ta Feng grocery tafeng_D11-02.zip (workspace raw/)",
+          "metadata_attempt": "small grocery basket attempt",
+          "metadata_criterion_failed": "(acquisition) corrupt/truncated zip transfer",
+          "metadata_verdict": "Unusable download.",
+          "metadata_counts": "{\"file_bytes\":91366}"
+        },
+        {
+          "input": "{\"source\":\"Systematic HuggingFace + web boutique/marketplace sweep\",\"attempt\":\"~50 broad-term sweep, 30+ candidate families previewed\"}",
+          "output": "REJECTED",
+          "metadata_source": "Systematic HuggingFace + web boutique/marketplace sweep",
+          "metadata_attempt": "~50 broad-term sweep, 30+ candidate families previewed",
+          "metadata_criterion_failed": "no candidate combined per-user timestamped purchases + item category + price in a freely-downloadable, properly-licensed, <=1000-item log",
+          "metadata_verdict": "Landscape yield effectively zero (OCR/text/video/product-catalog or already-in-corpus).",
+          "metadata_counts": "{\"candidate_families_previewed\":\"30+\",\"qualifying\":0}"
+        }
+      ]
+    }
+  ]
+}

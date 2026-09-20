@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "corpus": "small_ecommerce_catalog_screen_iter2",
+    "schema": "catalog_schema.json (iter-1 common schema)",
+    "iteration": 2,
+    "artifact": "gen_art_dataset_1 (real-catalog confirm-evidence widening)",
+    "outcome": "no_additional_real_catalog_accepted",
+    "n_accepted": 0,
+    "n_rejection_records": 64,
+    "k_grid": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      8
+    ],
+    "finding": "The public freely-downloadable landscape of genuinely small (<=1000-item) per-user purchase logs with item category+price is effectively empty in this environment: Retailrocket's most complete free mirror yields at most 96 users with >=4 purchases (best configuration) and has no price; Dunnhumby is gated behind login/form; the boutique/marketplace sweep produced no qualifying candidate. The acceptance bar was not lowered. This empty result is the corpus-contribution finding; see search_log.md and rejections.json. Every example is one rejected candidate: metadata_criterion_failed + metadata_counts carry the measured counts (Retailrocket subtree counts parsed from logs/explore_rr.log and logs/build.log)."
+  },
+  "datasets": [
+    {
+      "dataset": "acquisition_rejection_log",
+      "examples": [
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"global top-900 items by purchase-line count (all categories), MIN_PURCHASES in {4,5}\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "global top-900 items by purchase-line count",
+          "metadata_criterion_failed": "(4) users_with_purchases<100; (2) price absent (no price field in source)",
+          "metadata_verdict": "Best freely-obtainable retailrocket configuration: 900 items but only 96 users with >=4 purchases (83 with >=5), below the ~100 floor; and no price field.",
+          "metadata_counts": "{\"restriction\":\"top-900 items global\",\"n_items\":900,\"users_ge4\":96,\"users_ge5\":83}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 80\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 80 subtree",
+          "metadata_criterion_failed": "(1) n_items<150 (0 purchased+category-labelled items in subtree); (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":0,\"tx\":0,\"users\":0,\"users_ge5\":0}"
+        },
+        {
+          "input": "{\"source\":\"Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)\",\"attempt\":\"category-subtree restriction: top-level category 140\"}",
+          "output": "REJECTED",
+          "metadata_source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror (events.csv + item_properties_part1/2.csv + category_tree.csv, sha256-verified)",
+          "metadata_attempt": "top-level category 140 subtree",
+          "metadata_criterion_failed": "(4) users_with_->=5_purchases<100 within restricted subtree; (2) price absent",
+          "metadata_verdict": "Subtree does not meet the acceptance bar; sparsity makes any confirm k-grid degenerate.",
+          "metadata_counts": "{\"items_purchased\":3547,\"tx\":7524,\"users\":4119,\"users_ge5\":85}"
+        }
+      ]
+    }
+  ]
+}

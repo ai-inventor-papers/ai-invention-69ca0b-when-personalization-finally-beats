@@ -1,0 +1,79 @@
+{
+  "outcome": "no_additional_real_catalog_accepted",
+  "n_accepted": 0,
+  "accepted": [],
+  "note": "Every freely-downloadable candidate was checked against the pre-registered acceptance bar (n_items 150-900; nominal category per item; price-band present or honestly-absent; timestamped per-user purchases; >=~100 users with >=4 purchases so k-grid {0,1,2,3,5,8} is non-degenerate; license permits redistribution; post-restriction size < 300MB). None met ALL criteria, so none was standardized to a catalog. The bar was NOT lowered. This empty result is itself the corpus-contribution finding: the public small-catalog data landscape is genuinely thin and the two designated headline sources are gated.",
+  "rejections": [
+    {
+      "source": "Retailrocket (CIKM 2016) - sabin74/Retailrocket-Recommender-System public Git-LFS mirror",
+      "download": "events.csv (sha256 3745aa83238b... 94,237,913 B) + item_properties_part1/2.csv (sha 30aad5ae48... / d5e7d1a91d..., 484/409 MB) + category_tree.csv via LFS batch API",
+      "attempt": "category-subtree restriction (top-900 items per top-level category) and global top-900 flagship; MIN_PURCHASES in {4,5}",
+      "criterion_failed": "(4) users-with->=4-purchases; (2) price absent (no price field in source) -> would only be peripheral evidence",
+      "counts": {
+        "raw_rows": {"events": 2756101, "transaction_events": 22457, "item_properties_rows": 20275902, "items_with_category": 417053, "purchased_items_with_category": 11645},
+        "best_catalog_retailrocket_top900": {"restriction": "top-900 items by purchase-line count (all categories)", "n_items": 900, "users_ge4": 96, "users_ge5": 83},
+        "top140_subtree": {"n_items": 900, "users_ge4": 81, "users_ge5": 67, "subtree_tx": 7524, "subtree_users": 4119},
+        "top1532_subtree": {"n_items": 900, "users_ge4": 37, "users_ge5": 23},
+        "top1600_subtree": {"n_items": 900, "users_ge4": 41, "users_ge5": 31}
+      },
+      "verdict": "REJECT - even the largest accessible-mirror configuration yields only 96 users with >=4 purchases (83 with >=5), below the ~100 floor; and no price field exists. Full access to the canonical ~115k-transaction events.csv is gated behind Kaggle login."
+    },
+    {
+      "source": "Dunnhumby (Complete Journey / Customer First 2019)",
+      "download": "dunnhumby.com/source-files full 9-part RDS is behind a gated (form-fill) Contentful download; Kaggle frtgnn/dunnhumby-the-complete-journey requires login; HF mirror '54-acme/dunnhumby_2019' returns gated/404",
+      "attempt": "product-category subset restriction for price-bearing catalogs",
+      "criterion_failed": "acquisition - not obtainable without login/form-gate in this environment",
+      "counts": {
+        "dunnhumby_com_ungated_samples": {"Data_Sample_zip_bytes": 22437, "Sample_2K_baskets_zip": "present"},
+        "reco_hut_dataset_repo": "empty (no files)",
+        "github_search": "no raw transaction_data.csv mirror found with data committed"
+      },
+      "verdict": "REJECT - gated (Kaggle login / dunnhumby form); only tiny ungated samples available which cannot meet the 100-user bar."
+    },
+    {
+      "source": "Maven Roasters coffee shop (Kggle 'agungpambudi/trends-product-coffee-shop-sales-revenue-dataset'; HF jason1966 mirror, 54 downloads)",
+      "attempt": "small-shop boutique sweep",
+      "criterion_failed": "(3)/(4) no customer/user identifier (only transaction_id, product, unit_price, timestamp); per-user histories impossible",
+      "counts": {"has_product_category": true, "has_unit_price": true, "has_user_id": false},
+      "verdict": "REJECT - genuinely small shop with category+price+timestamp but NO user dimension."
+    },
+    {
+      "source": "Northwind purchase orders (HF AyoubChLin/northwind_PurchaseOrders, boussad/northwind_PurchaseOrders)",
+      "attempt": "classic small retailer",
+      "criterion_failed": "data are PDF purchase-order documents for text classification, not structured per-user transaction logs (classic Northwind RDB is only ~91 customers / 77 products - below 100-user bar too)",
+      "counts": {"northwind_classic_products_approx": 77, "northwind_classic_customers_approx": 91},
+      "verdict": "REJECT"
+    },
+    {
+      "source": "Systematic HuggingFace / Kaggle boutique-marketplace sweep",
+      "attempt": "HF API + ability-server searches over ~50 broad terms (retail, ecommerce, purchase history, transactions, supermarket, coffee shop, bookstore, bakery, cosmetics, watches, jewelry, small business, marketplace, ...)",
+      "criterion_failed": "no candidate had per-user timestamped purchases AND item category AND price while being <=1000 items and freely downloadable; candidates were OCR/text/video/product-catalogue or already-in-corpus (Olist/UCI Online Retail duplicates)",
+      "counts": {"hf_repos_checked": "30+ candidate families previewed", "qualifying": 0},
+      "verdict": "REJECT - landscape yield is effectively zero; documented exhaustively in search_log.md."
+    },
+    {
+      "source": "ecommerce_orders.csv (present in workspace raw/, 10,000 rows)",
+      "download": "found already-downloaded in raw/; no source URL/provenance on record",
+      "attempt": "candidate inspection for a small per-user e-commerce order log",
+      "criterion_failed": "(5) provenance/origin - unverifiable source and clearly machine-generated: 365 distinct order_timestamps for 10,000 rows (up to 45 rows share one timestamp), sequential customer_id 1..2999 and product_id 1..1000, generated addresses",
+      "counts": {"rows": 10000, "distinct_customers": 2713, "distinct_items": 999, "distinct_timestamps": 365},
+      "verdict": "REJECT - cannot be trusted as REAL catalog evidence (synthetic signature, no citeable provenance); accepting it would violate the no-fabricated-provenance rule."
+    },
+    {
+      "source": "supermarket_germany.csv (present in workspace raw/, 1,000 rows)",
+      "download": "found already-downloaded in raw/; classic tutorial 'supermarket sales' dataset, German-store variant",
+      "attempt": "candidate inspection for a small supermarket purchase log",
+      "criterion_failed": "(1) n_items - only 6 distinct items (the Product_line categories); no product-level SKU column; also not a documented real single-shop log",
+      "counts": {"rows": 1000, "distinct_customers": 198, "distinct_items": 6, "distinct_days": 344},
+      "verdict": "REJECT - 6-item universe is far below the 150-item floor."
+    },
+    {
+      "source": "Ta Feng grocery tafeng_D11-02.zip (present in workspace raw/)",
+      "download": "found already-downloaded in raw/ (91 KB)",
+      "attempt": "candidate inspection for a small grocery basket dataset",
+      "criterion_failed": "(acquisition) - file is a corrupt/truncated transfer (unzip: 'End-of-central-directory signature not found'); full Ta Feng dataset is not small and its redistribution provenance is unverified here",
+      "counts": {"file_bytes": 91366, "unzip": "corrupt"},
+      "verdict": "REJECT - unusable download; not pursued."
+    }
+  ]
+}
